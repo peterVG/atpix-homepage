@@ -9,6 +9,8 @@ All styles, fonts, and images are **self-hosted** from this repository (no CDN d
 ```
 atpix-homepage/
 ├── index.html
+├── docs/
+│   └── 000-UX-guide.md   # design tokens & style guide (sync from ATPix)
 ├── CNAME                 # atpix.net
 ├── .nojekyll
 ├── assets/
@@ -47,6 +49,12 @@ npm run vendor:assets
 ```
 
 Commit `assets/css/main.css` (and any updated font/image files) before pushing.
+
+## Design reference
+
+Homepage colors, typography, spacing, and component rules are defined in [docs/000-UX-guide.md](docs/000-UX-guide.md). When updating the site, align `tailwind.config.js` and `src/input.css` with the token YAML at the top of that file.
+
+Canonical source: [ATPix/docs/references/000-UX-guide.md](https://github.com/peterVG/ATPix/blob/main/docs/references/000-UX-guide.md) — copy into this repo when the design system changes.
 
 ## GitHub Pages
 
