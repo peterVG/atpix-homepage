@@ -4,133 +4,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>ATPix | Sovereign Media Reference on AT Protocol</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-bright": "#363941",
-                    "surface-container-low": "#181c23",
-                    "c2pa-wellformed": "#60A5FA",
-                    "tertiary-fixed-dim": "#4edea3",
-                    "secondary-fixed-dim": "#b9c8de",
-                    "atproto-blue": "#0085FF",
-                    "on-error": "#690005",
-                    "surface-dim": "#10131b",
-                    "secondary": "#b9c8de",
-                    "c2pa-invalid": "#F87171",
-                    "surface": "#10131b",
-                    "on-tertiary-fixed-variant": "#005236",
-                    "surface-container-lowest": "#0a0e15",
-                    "primary-fixed-dim": "#a9c7ff",
-                    "on-tertiary-container": "#00311f",
-                    "inverse-surface": "#e0e2ec",
-                    "status-public": "#10B981",
-                    "on-error-container": "#ffdad6",
-                    "on-surface-variant": "#c0c6d6",
-                    "tertiary-container": "#00a572",
-                    "on-primary": "#003063",
-                    "surface-variant": "#31353d",
-                    "c2pa-trusted": "#34D399",
-                    "on-secondary": "#233143",
-                    "tertiary": "#4edea3",
-                    "error": "#ffb4ab",
-                    "error-container": "#93000a",
-                    "secondary-fixed": "#d4e4fa",
-                    "on-secondary-container": "#a7b6cc",
-                    "inverse-primary": "#005db6",
-                    "outline-variant": "#404754",
-                    "status-permissioned": "#8B5CF6",
-                    "surface-container": "#1c2027",
-                    "surface-container-highest": "#31353d",
-                    "secondary-container": "#39485a",
-                    "tertiary-fixed": "#6ffbbe",
-                    "inverse-on-surface": "#2d3038",
-                    "primary": "#a9c7ff",
-                    "on-tertiary": "#003824",
-                    "on-primary-fixed-variant": "#00468b",
-                    "on-background": "#e0e2ec",
-                    "slate-900": "#0F172A",
-                    "on-secondary-fixed": "#0d1c2d",
-                    "on-tertiary-fixed": "#002113",
-                    "status-unlisted": "#F59E0B",
-                    "on-secondary-fixed-variant": "#39485a",
-                    "primary-container": "#3a90ff",
-                    "surface-tint": "#a9c7ff",
-                    "outline": "#8a91a0",
-                    "on-primary-fixed": "#001b3d",
-                    "on-primary-container": "#002957",
-                    "slate-800": "#1E293B",
-                    "background": "#10131b",
-                    "on-surface": "#e0e2ec",
-                    "surface-container-high": "#262a32",
-                    "primary-fixed": "#d6e3ff"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "panel-padding": "1.25rem",
-                    "container-max-width": "1440px",
-                    "grid-margin": "2rem",
-                    "stack-sm": "0.5rem",
-                    "grid-gutter": "1.5rem",
-                    "stack-md": "1rem"
-            },
-            "fontFamily": {
-                    "body-base": ["Inter"],
-                    "headline-md-mobile": ["Hanken Grotesk"],
-                    "headline-md": ["Hanken Grotesk"],
-                    "display-lg": ["Hanken Grotesk"],
-                    "metadata-code": ["JetBrains Mono"],
-                    "label-caps": ["Inter"],
-                    "disclosure-l1": ["Inter"]
-            },
-            "fontSize": {
-                    "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "metadata-code": ["13px", {"lineHeight": "16px", "fontWeight": "500"}],
-                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                    "disclosure-l1": ["14px", {"lineHeight": "20px", "fontWeight": "600"}]
-            }
-          },
-        },
-      }
-    </script>
-<style>
-        body {
-            background-color: #10131b;
-            color: #e0e2ec;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            line-height: 1;
-            text-transform: none;
-            letter-spacing: normal;
-            word-wrap: normal;
-            white-space: nowrap;
-            direction: ltr;
-        }
-        .glass-panel {
-            background: rgba(28, 32, 39, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(64, 71, 84, 0.5);
-        }
-        .status-badge {
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid #8B5CF6;
-        }
-    </style>
+<link rel="stylesheet" href="assets/css/fonts.css"/>
+<link rel="stylesheet" href="assets/css/main.css"/>
 </head>
 <body class="font-body-base text-body-base bg-background overflow-x-hidden">
 <!-- TopNavBar -->
@@ -147,7 +22,7 @@
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">notifications</button>
 <button class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">cloud_upload</button>
 <div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="ATPix dev avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRZygQBAFTZg3xYt7-cJY1gT5trDjkLk_kGKRDSl5nZvr6RFltF9NXQF_8pFYqEf1D7qHBB9rzhXPnIn-YHy8cSgTBKE--KY-gnwwZ6vwwTIrIjLIF3Rdaz4tee_1VaiLKhuLEJEenQWEm0NqEzXCnVD1dxyJ-8amJ3ze5VgWN547Sd22JgjrL7JG37Ijdq9c39lzzGbv-tyPo0R1d6PMmNoeyjHX8UKi0zmu0jRFQHUgKgGaxu4UBb3iEuen6Plq9mckVKUYmBIM-"/>
+<img class="w-full h-full object-cover" data-alt="ATPix dev avatar" src="assets/images/avatar.jpg"/>
 </div>
 </div>
 </header>
@@ -273,7 +148,7 @@ Production Lexicons • Broader format support • Community testing
 </div>
 </div>
 <div class="w-full md:w-1/3 aspect-video rounded-xl overflow-hidden shadow-2xl border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="C2PA technical visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0mdoo8eBhe4a3gvBOVJSbcOcHC9d_XRm7FjwdGbS8bUIbfZ9Lr4L57oSfqL1x5nI87f0bwh3QXBeMJG81i0Ac1LVBbFKJSeYHmeyG8YFdjc1l1QIP4regAqzit7rzJVEuL-H1HLY_P4rHp9CgJ-OP6q6E7VCncFg4KBKqBIqffP4Qq_zzmQgScxoRnaEuhrU2OpXSCz9zgmkq6caLrP7M7vjFOlyahEil_zjDH3QrDmfEUpW2eVXJWCZmJzqkesz1El3p4LBKLnou"/>
+<img class="w-full h-full object-cover" data-alt="C2PA technical visualization" src="assets/images/c2pa-visual.jpg"/>
 </div>
 </div>
 </div>
@@ -288,7 +163,7 @@ Production Lexicons • Broader format support • Community testing
 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 px-grid-margin max-w-container-max-width mx-auto">
 <!-- Reuse or update existing gallery items as technical examples -->
 <div class="group relative aspect-square bg-surface-container rounded-xl overflow-hidden border border-outline-variant hover:border-atproto-blue transition-colors cursor-pointer">
-<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Technical PDS architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDatEdBtyNvzmgrzA3BTPbKUGLo0QvfCbqyZIgnS92PHzZvI_Um9PY5LS522LLw5k-mM7JhXKCW7CEmJ7W7teRRh6DE_hSQV85NNB5eZKhA-9q0SDKKi0chohVm_Xzh8HtW-bTq6wvmVHXMZ21soLndANk58LT5t3JpKyJdxgabN0PirRFoKccDIEiOsT0D_18Vw3DG2Tpjl5bLAkdjd7Dl5upsK6xI6o1fsi2Vdgwruq2SeFwKW6i9P68ygJdLyhknDqYKfBPsFvgv"/>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Technical PDS architecture" src="assets/images/gallery-thumb.jpg"/>
 <div class="absolute bottom-0 left-0 w-full p-3 bg-gradient-to-t from-black/80 to-transparent flex items-end justify-between">
 <span class="font-metadata-code text-metadata-code text-white">@dev.atpix</span>
 <span class="material-symbols-outlined text-c2pa-trusted text-sm">verified</span>
