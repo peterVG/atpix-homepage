@@ -13,7 +13,7 @@
 <div class="flex items-center gap-8">
 <a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="font-headline-md text-headline-md font-bold text-atproto-blue cursor-pointer no-underline">ATPix</a>
 <nav class="hidden md:flex items-center gap-6">
-<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Galleries</a>
+<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="https://docs.atpix.net#overview/000-architecture.md">Architecture</a>
 <a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="https://docs.atpix.net">Docs</a>
 <a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="https://github.com/peterVG/ATPix">GitHub</a>
 </nav>
@@ -32,20 +32,25 @@
 <section class="relative min-h-[700px] flex flex-col items-center justify-center text-center px-grid-margin overflow-hidden">
 <div class="relative z-10 max-w-4xl mx-auto space-y-stack-md">
 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full status-badge text-status-permissioned mb-4">
-<span class="font-label-caps text-label-caps">Proof of Concept v0.1</span>
+<span class="font-label-caps text-label-caps">Proof of Concept · Phase 3 (Path A)</span>
 </div>
 <h1 class="font-display-lg text-display-lg md:text-[64px] text-on-surface leading-tight tracking-tight">
                     Your Data.<br/>
 <span class="text-atproto-blue">Sovereign Protocol.</span>
 </h1>
 <p class="max-w-2xl mx-auto text-on-surface-variant font-body-base text-body-base text-lg opacity-80">
-                    AT Protocol reference implementation for user-owned photo galleries. Built with HappyView App View, C2PA 2.2 provenance, and experimental Permissioned Spaces (ATP-0016).
+                    AT Protocol reference implementation for user-owned photo galleries. OAuth sign-in, C2PA 2.2 upload provenance, and a working My Gallery grid are live in dev; permissioned albums via HappyView Spaces (ATP-0016) are the core v1 R&amp;D target.
                 </p>
 <div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-<a href="https://github.com/peterVG/ATPix" target="_blank" 
+<a href="https://github.com/peterVG/ATPix" target="_blank" rel="noopener noreferrer"
    class="flex items-center gap-3 px-8 py-4 bg-atproto-blue text-white rounded-xl font-bold hover:scale-105 active:scale-95 transition-transform">
 <span class="material-symbols-outlined">code</span>
                         View on GitHub
+                    </a>
+<a href="https://docs.atpix.net" target="_blank" rel="noopener noreferrer"
+   class="flex items-center gap-3 px-8 py-4 bg-surface-container-high border border-outline-variant text-on-surface rounded-xl font-semibold hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined">menu_book</span>
+                        Documentation
                     </a>
 <button onclick="document.getElementById('status').scrollIntoView({ behavior: 'smooth' });" 
         class="px-8 py-4 bg-surface-container-high border border-outline-variant text-on-surface rounded-xl font-semibold hover:bg-surface-bright transition-colors">
@@ -64,22 +69,24 @@
                     Project Status — Early Reference Implementation
 </h2>
 <p class="text-on-surface-variant max-w-3xl">
-                    <a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="no-underline text-inherit">ATPix</a> is not a polished consumer app. It is a developer-focused PoC demonstrating <strong>user-owned storage via PDS</strong>, 
-                    <strong>C2PA tamper-evident provenance</strong>, and <strong>permissioned albums via HappyView Spaces (ATP-0016)</strong>. 
-                    Gallery population uses dual paths: direct PDS uploads + HappyView network discovery (no custom firehose).
+                    <a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="no-underline text-inherit">ATPix</a> is not a polished consumer app. It is a developer-focused PoC for <strong>user-owned PDS storage</strong>,
+                    <strong>C2PA 2.2 upload provenance</strong>, and <strong>permissioned albums via HappyView Spaces (ATP-0016)</strong>.
+                    Path A (own uploads → My Gallery) ships in the monorepo today; Path B network discovery and public profile sharing follow after permissioned-space validation.
+                    Track execution in the <a href="https://docs.atpix.net#overview/005-plan.md" class="text-atproto-blue hover:underline">implementation plan</a>.
 </p>
+<p class="text-on-surface-variant text-sm mt-3 opacity-70">Last synced with <a href="https://github.com/peterVG/ATPix" class="text-atproto-blue hover:underline">ATPix main</a> · 2026-07-14 (Task 3.2 merged)</p>
 <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
 <div class="bg-surface-container p-4 rounded-lg">
-<strong class="text-c2pa-trusted">Done</strong><br>
-PDS uploads • C2PA embedding • Public galleries • HappyView indexing
+<strong class="text-c2pa-trusted">Shipped</strong><br>
+OAuth shell &amp; theme · C2PA manifest on upload · Photo upload (public/unlisted) · My Gallery grid · HappyView <code class="font-metadata-code text-metadata-code">net.atpix.gallery.*</code> lexicons
 </div>
 <div class="bg-surface-container p-4 rounded-lg">
 <strong class="text-status-permissioned">In Progress</strong><br>
-Permissioned Spaces (mandatory v1) • Full album curation • C2PA validation UI
+Album organization &amp; captions (Task 3.3) · Permissioned Spaces album lifecycle (F-008, mandatory v1 R&amp;D)
 </div>
 <div class="bg-surface-container p-4 rounded-lg">
-<strong class="text-status-unlisted">Next</strong><br>
-Production Lexicons • Broader format support • Community testing
+<strong class="text-status-unlisted">Planned</strong><br>
+Network discovery feed (Path B) · Public profiles &amp; shareable links · Photo detail &amp; full C2PA edit/validation UI · Performance verification
 </div>
 </div>
 </div>
@@ -114,7 +121,7 @@ Production Lexicons • Broader format support • Community testing
 </span>
 <h3 class="font-headline-md text-headline-md mb-2">HappyView Discovery</h3>
 <p class="text-on-surface-variant">
-                            Follow-graph + hashtag feed powered entirely by HappyView Jetstream + backfill. No custom firehose.
+                            Follow-graph + hashtag feed via HappyView Jetstream + backfill (Path B). Planned after permissioned-space validation — no custom firehose.
                         </p>
 </div>
 </div>
