@@ -5,7 +5,8 @@
   "scripts": {
     "vendor:assets": "bash ./scripts/vendor-assets.sh",
     "build:css": "tailwindcss -i ./src/input.css -o ./assets/css/main.css --minify",
-    "build": "npm run build:css"
+    "build": "npm run build:css",
+    "sync:status": "bash ./scripts/sync-status-from-atpix.sh"
   },
   "devDependencies": {
     "@fontsource/hanken-grotesk": "^5.2.5",

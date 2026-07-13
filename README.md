@@ -56,6 +56,18 @@ Homepage colors, typography, spacing, and component rules are defined in [docs/0
 
 Canonical source: [ATPix/docs/references/000-UX-guide.md](https://github.com/peterVG/ATPix/blob/main/docs/references/000-UX-guide.md) — copy into this repo when the design system changes.
 
+## Status sync with ATPix
+
+After each milestone on [ATPix `main`](https://github.com/peterVG/ATPix), refresh the **Current Status** section in `index.html`:
+
+```bash
+# Clone ATPix next to this repo, or set ATPix_REPO
+npm run sync:status
+# ATPix_REPO=../ATPix npm run sync:status
+```
+
+Full checklist: [docs/status-sync.md](docs/status-sync.md).
+
 ## GitHub Pages
 
 1. **Settings → Pages → Source:** branch `main`, folder `/ (root)`
