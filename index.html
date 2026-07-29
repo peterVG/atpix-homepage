@@ -3,186 +3,443 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>ATPix | Sovereign Media Reference on AT Protocol</title>
+<meta name="description" content="ATPix — the photographer’s gallery on the AT Protocol. Own your library, prove provenance with C2PA, share with permissioned albums, and keep versioned archives that travel with you."/>
+<meta name="theme-color" content="#10131b"/>
+<title>ATPix — Own your photos. On the open social web.</title>
 <link rel="stylesheet" href="assets/css/fonts.css"/>
 <link rel="stylesheet" href="assets/css/main.css"/>
+<style>
+  html { scroll-behavior: smooth; }
+  .hero-glow {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 133, 255, 0.22), transparent 55%),
+      radial-gradient(ellipse 50% 40% at 90% 20%, rgba(139, 92, 246, 0.12), transparent 50%),
+      radial-gradient(ellipse 40% 30% at 10% 40%, rgba(16, 185, 129, 0.08), transparent 45%);
+  }
+  .mock-frame {
+    border: 1px solid rgba(64, 71, 84, 0.9);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.35),
+      0 24px 48px -12px rgba(0, 0, 0, 0.55),
+      0 0 80px -20px rgba(0, 133, 255, 0.25);
+  }
+  .mock-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+  }
+  .feature-card:hover .mock-frame img {
+    transform: scale(1.02);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 999px;
+    border: 1px solid rgba(64, 71, 84, 0.9);
+    background: rgba(28, 32, 39, 0.9);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #c0c6d6;
+  }
+  .section-kicker {
+    color: #a9c7ff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .nav-link {
+    color: #c0c6d6;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .nav-link:hover { color: #a9c7ff; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 0.5rem;
+    background: #0085FF;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+  .btn-primary:hover { transform: translateY(-1px); filter: brightness(1.08); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.5rem;
+    border-radius: 0.5rem;
+    background: #1c2027;
+    border: 1px solid #404754;
+    color: #e0e2ec;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .btn-secondary:hover { background: #262a32; border-color: #8a91a0; }
+  .stat {
+    border: 1px solid #404754;
+    background: #1c2027;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+  }
+  .stat strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #a9c7ff;
+    margin-bottom: 0.25rem;
+  }
+</style>
 </head>
-<body class="font-body-base text-body-base bg-background overflow-x-hidden">
-<!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 flex justify-between items-center px-grid-margin h-16 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
-<div class="flex items-center gap-8">
-<a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="font-headline-md text-headline-md font-bold text-atproto-blue cursor-pointer no-underline">ATPix</a>
-<nav class="hidden md:flex items-center gap-6">
-<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="https://docs.atpix.net#overview/000-architecture.md">Architecture</a>
-<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="https://docs.atpix.net">Docs</a>
-<a class="font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="https://github.com/peterVG/ATPix">GitHub</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">notifications</button>
-<button class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer">cloud_upload</button>
-<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="ATPix dev avatar" src="assets/images/avatar.jpg"/>
-</div>
-</div>
+<body class="font-body-base text-body-base bg-background overflow-x-hidden text-on-surface">
+
+<!-- Top navigation — product marketing only -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-grid-margin h-16 bg-surface/85 backdrop-blur-md border-b border-outline-variant">
+  <div class="flex items-center gap-8">
+    <a href="#" class="font-headline-md text-headline-md font-bold text-atproto-blue no-underline">ATPix</a>
+    <nav class="hidden md:flex items-center gap-6" aria-label="Primary">
+      <a class="nav-link font-body-base text-body-base" href="#features">Features</a>
+      <a class="nav-link font-body-base text-body-base" href="#why">Why ATPix</a>
+      <a class="nav-link font-body-base text-body-base" href="#product">Product tour</a>
+      <a class="nav-link font-body-base text-body-base" href="#community">Join</a>
+      <a class="nav-link font-body-base text-body-base" href="https://github.com/arkrim/atpix" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="flex items-center gap-3">
+    <a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer"
+       class="hidden sm:inline-flex items-center gap-2 text-on-surface-variant hover:text-primary text-sm no-underline">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.22-.253.442-.345.666-1.125 2.43-2.016 4.56-2.016 6.795 0 3.896 2.517 7.352 6.004 7.352 3.488 0 6.004-3.456 6.004-7.352 0-2.235-.89-4.365-2.016-6.795-.092-.224-.207-.446-.345-.666.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364C23.622 9.418 24 4.458 24 3.768 24 3.08 23.861 1.908 23.098 1.565c-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/></svg>
+      Bluesky
+    </a>
+    <a href="https://github.com/arkrim/atpix" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm py-2 px-4">
+      Star on GitHub
+    </a>
+  </div>
 </header>
 
 <main class="pt-16">
-<!-- Hero Section -->
-<section class="relative min-h-[700px] flex flex-col items-center justify-center text-center px-grid-margin overflow-hidden">
-<div class="relative z-10 max-w-4xl mx-auto space-y-stack-md">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full status-badge text-status-permissioned mb-4">
-<span class="font-label-caps text-label-caps">Proof of Concept · Phase 3 (Path A)</span>
-</div>
-<h1 class="font-display-lg text-display-lg md:text-[64px] text-on-surface leading-tight tracking-tight">
-                    Your Data.<br/>
-<span class="text-atproto-blue">Sovereign Protocol.</span>
-</h1>
-<p class="max-w-2xl mx-auto text-on-surface-variant font-body-base text-body-base text-lg opacity-80">
-                    AT Protocol reference implementation for user-owned photo galleries. OAuth sign-in, C2PA 2.2 upload provenance, and a working My Gallery grid are live in dev; permissioned albums via HappyView Spaces (ATP-0016) are the core v1 R&amp;D target.
-                </p>
-<div class="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-<a href="https://github.com/peterVG/ATPix" target="_blank" rel="noopener noreferrer"
-   class="flex items-center gap-3 px-8 py-4 bg-atproto-blue text-white rounded-xl font-bold hover:scale-105 active:scale-95 transition-transform">
-<span class="material-symbols-outlined">code</span>
-                        View on GitHub
-                    </a>
-<a href="https://docs.atpix.net" target="_blank" rel="noopener noreferrer"
-   class="flex items-center gap-3 px-8 py-4 bg-surface-container-high border border-outline-variant text-on-surface rounded-xl font-semibold hover:bg-surface-bright transition-colors">
-<span class="material-symbols-outlined">menu_book</span>
-                        Documentation
-                    </a>
-<button onclick="document.getElementById('status').scrollIntoView({ behavior: 'smooth' });" 
-        class="px-8 py-4 bg-surface-container-high border border-outline-variant text-on-surface rounded-xl font-semibold hover:bg-surface-bright transition-colors">
-                        Current Status
-                    </button>
-</div>
-</div>
-</section>
 
-<!-- Status Banner -->
-<section id="status" class="py-12 bg-surface-container-lowest border-b border-outline-variant">
-<div class="max-w-container-max-width mx-auto px-grid-margin">
-<div class="glass-panel p-8 rounded-xl">
-<h2 class="font-headline-md text-headline-md mb-4 flex items-center gap-3">
-<span class="material-symbols-outlined text-c2pa-wellformed">info</span>
-                    Project Status — Early Reference Implementation
-</h2>
-<p class="text-on-surface-variant max-w-3xl">
-                    <a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="no-underline text-inherit">ATPix</a> is not a polished consumer app. It is a developer-focused PoC for <strong>user-owned PDS storage</strong>,
-                    <strong>C2PA 2.2 upload provenance</strong>, and <strong>permissioned albums via HappyView Spaces (ATP-0016)</strong>.
-                    Path A (own uploads → My Gallery) ships in the monorepo today; Path B network discovery and public profile sharing follow after permissioned-space validation.
-                    Track execution in the <a href="https://docs.atpix.net#overview/005-plan.md" class="text-atproto-blue hover:underline">implementation plan</a>.
-</p>
-<p class="text-on-surface-variant text-sm mt-3 opacity-70">Last synced with <a href="https://github.com/peterVG/ATPix" class="text-atproto-blue hover:underline">ATPix main</a> · 2026-07-14 (Task 3.2 merged)</p>
-<div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-<div class="bg-surface-container p-4 rounded-lg">
-<strong class="text-c2pa-trusted">Shipped</strong><br>
-OAuth shell &amp; theme · C2PA manifest on upload · Photo upload (public/unlisted) · My Gallery grid · HappyView <code class="font-metadata-code text-metadata-code">net.atpix.gallery.*</code> lexicons
-</div>
-<div class="bg-surface-container p-4 rounded-lg">
-<strong class="text-status-permissioned">In Progress</strong><br>
-Album organization &amp; captions (Task 3.3) · Permissioned Spaces album lifecycle (F-008, mandatory v1 R&amp;D)
-</div>
-<div class="bg-surface-container p-4 rounded-lg">
-<strong class="text-status-unlisted">Planned</strong><br>
-Network discovery feed (Path B) · Public profiles &amp; shareable links · Photo detail &amp; full C2PA edit/validation UI · Performance verification
-</div>
-</div>
-</div>
-</div>
-</section>
+  <!-- Hero -->
+  <section class="hero-glow relative min-h-[92vh] flex flex-col justify-center px-grid-margin py-20 overflow-hidden">
+    <div class="max-w-container-max-width mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div class="space-y-6">
+        <div class="flex flex-wrap gap-2">
+          <span class="chip text-status-public border-status-public/30">MVP</span>
+          <span class="chip">AT Protocol native</span>
+          <span class="chip">First community</span>
+        </div>
+        <h1 class="font-display-lg text-display-lg md:text-[56px] leading-tight tracking-tight text-on-surface">
+          Your photos.<br/>
+          <span class="text-atproto-blue">Your identity.</span><br/>
+          Open protocol.
+        </h1>
+        <p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+          ATPix is the gallery built for creators who refuse to lock their work in a silo.
+          Sign in with your atproto handle, publish with Content Credentials, organize albums
+          the network can read—and keep archives that still belong to you.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="https://github.com/arkrim/atpix" target="_blank" rel="noopener noreferrer" class="btn-primary">
+            <span class="material-symbols-outlined text-[20px]">rocket_launch</span>
+            Explore the product on GitHub
+          </a>
+          <a href="#product" class="btn-secondary">
+            <span class="material-symbols-outlined text-[20px]">slideshow</span>
+            See the product tour
+          </a>
+        </div>
+        <p class="text-sm text-on-surface-variant/80 pt-2">
+          Built for photographers, Bluesky / atproto users, and early adopters shaping the open media web.
+        </p>
+      </div>
+      <div class="relative">
+        <div class="mock-frame rounded-xl overflow-hidden bg-surface-container">
+          <img src="assets/images/product/thumbs/gallery.jpg" width="1200" height="960" alt="ATPix My Gallery — personal archive grid with C2PA and visibility badges"/>
+        </div>
+        <p class="mt-3 text-center text-xs text-on-surface-variant uppercase tracking-widest font-bold">My Gallery · live product UI</p>
+      </div>
+    </div>
+  </section>
 
-<!-- Core Architecture Bento -->
-<section class="py-24 px-grid-margin max-w-container-max-width mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-grid-gutter">
-<!-- PDS Storage -->
-<div class="md:col-span-8 group relative overflow-hidden rounded-xl glass-panel p-panel-padding flex flex-col justify-between min-h-[400px]">
-<div class="relative z-10">
-<span class="inline-block p-3 rounded-lg bg-atproto-blue/10 text-atproto-blue mb-4">
-<span class="material-symbols-outlined">database</span>
-</span>
-<h3 class="font-headline-md text-headline-md mb-2">PDS-Backed Sovereignty</h3>
-<p class="text-on-surface-variant max-w-md">
-                            Photos live as signed records + blobs in your Personal Data Server. Portable. Verifiable. No vendor lock-in.
-                        </p>
-</div>
-<div class="mt-8 flex gap-2">
-<span class="font-metadata-code text-metadata-code bg-surface-container-highest px-2 py-1 rounded border border-outline-variant">net.atpix.gallery.photo</span>
-<span class="font-metadata-code text-metadata-code bg-surface-container-highest px-2 py-1 rounded border border-outline-variant">did:plc:...</span>
-</div>
-</div>
+  <!-- Social proof / positioning -->
+  <section class="border-y border-outline-variant bg-surface-container-lowest py-14 px-grid-margin">
+    <div class="max-w-container-max-width mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="stat">
+        <strong>You own it</strong>
+        <span class="text-on-surface-variant text-sm">Records and network images live on your PDS—not a proprietary vault you can’t leave.</span>
+      </div>
+      <div class="stat">
+        <strong>Provenance built in</strong>
+        <span class="text-on-surface-variant text-sm">C2PA 2.2 Content Credentials on publish so “who signed this” is checkable, not marketing fluff.</span>
+      </div>
+      <div class="stat">
+        <strong>Share with intent</strong>
+        <span class="text-on-surface-variant text-sm">Public, unlisted, or permissioned albums for invited members—clear access, no false “encryption” claims.</span>
+      </div>
+      <div class="stat">
+        <strong>Archive-grade path</strong>
+        <span class="text-on-surface-variant text-sm">Operator media packages with version history and export—so masters aren’t disposable social blobs.</span>
+      </div>
+    </div>
+  </section>
 
-<!-- Network Discovery -->
-<div class="md:col-span-4 group relative overflow-hidden rounded-xl glass-panel p-panel-padding flex flex-col min-h-[400px]">
-<div class="mb-8">
-<span class="inline-block p-3 rounded-lg bg-tertiary-container/20 text-tertiary mb-4">
-<span class="material-symbols-outlined">hub</span>
-</span>
-<h3 class="font-headline-md text-headline-md mb-2">HappyView Discovery</h3>
-<p class="text-on-surface-variant">
-                            Follow-graph + hashtag feed via HappyView Jetstream + backfill (Path B). Planned after permissioned-space validation — no custom firehose.
-                        </p>
-</div>
-</div>
+  <!-- Why -->
+  <section id="why" class="py-24 px-grid-margin max-w-container-max-width mx-auto">
+    <div class="max-w-3xl mb-12">
+      <p class="section-kicker mb-3">Why ATPix</p>
+      <h2 class="font-headline-md text-headline-md md:text-[40px] leading-tight mb-4">Photo apps trapped your library.<br/>The open social web can free it.</h2>
+      <p class="text-on-surface-variant text-lg leading-relaxed">
+        Mainstream platforms treat your portfolio as engagement fuel. Generic social clients treat media as throwaway attachments.
+        ATPix is a <em>product</em> for people who care about ownership, trust, and longevity—while still feeling like a modern gallery.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <article class="glass-panel p-panel-padding rounded-xl border border-outline-variant">
+        <span class="material-symbols-outlined text-atproto-blue text-3xl mb-4 block">lock_open</span>
+        <h3 class="font-headline-md text-xl mb-2">No more hostage libraries</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Your identity is a DID/handle. Your gallery records are portable Lexicon data. When you leave, your work doesn’t evaporate with a single vendor’s CDN.</p>
+      </article>
+      <article class="glass-panel p-panel-padding rounded-xl border border-outline-variant">
+        <span class="material-symbols-outlined text-c2pa-wellformed text-3xl mb-4 block">verified_user</span>
+        <h3 class="font-headline-md text-xl mb-2">Trust without hype</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Content Credentials label validation state—VALID, TRUSTED, INVALID, NONE—not “authentic photo” theater. Creators and viewers get honest signals.</p>
+      </article>
+      <article class="glass-panel p-panel-padding rounded-xl border border-outline-variant">
+        <span class="material-symbols-outlined text-status-permissioned text-3xl mb-4 block">groups</span>
+        <h3 class="font-headline-md text-xl mb-2">Permissioned when it matters</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Client work, family sets, embargoed shoots: invite members by handle. Membership-gated access—not pretend end-to-end encryption marketing.</p>
+      </article>
+    </div>
+  </section>
 
-<!-- C2PA Provenance -->
-<div class="md:col-span-12 group relative overflow-hidden rounded-xl glass-panel p-8 flex flex-col md:flex-row gap-8 items-center">
-<div class="flex-1 space-y-4">
-<span class="inline-block p-3 rounded-lg bg-c2pa-wellformed/10 text-c2pa-wellformed">
-<span class="material-symbols-outlined">verified</span>
-</span>
-<h3 class="font-headline-md text-headline-md">C2PA 2.2 Provenance</h3>
-<p class="text-on-surface-variant max-w-xl">
-                            Every upload embeds a cryptographically signed manifest. Actions (created, edited, published) create a verifiable audit trail.
-                        </p>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
-<div class="bg-surface-container-low p-4 rounded-lg border-l-4 border-c2pa-trusted">
-<span class="font-label-caps text-label-caps block mb-1">Status</span>
-<span class="font-metadata-code text-metadata-code text-c2pa-trusted">VALID_SIGNATURE</span>
-</div>
-<div class="bg-surface-container-low p-4 rounded-lg border-l-4 border-atproto-blue">
-<span class="font-label-caps text-label-caps block mb-1">Issuer</span>
-<span class="font-metadata-code text-metadata-code">atproto + C2PA</span>
-</div>
-</div>
-</div>
-<div class="w-full md:w-1/3 aspect-video rounded-xl overflow-hidden shadow-2xl border border-outline-variant">
-<img class="w-full h-full object-cover" data-alt="C2PA technical visualization" src="assets/images/c2pa-visual.jpg"/>
-</div>
-</div>
-</div>
-</section>
+  <!-- Features grid -->
+  <section id="features" class="py-24 px-grid-margin bg-surface-container-lowest border-y border-outline-variant">
+    <div class="max-w-container-max-width mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+        <div class="max-w-2xl">
+          <p class="section-kicker mb-3">Features</p>
+          <h2 class="font-headline-md text-headline-md md:text-[40px] leading-tight">Everything a first-community creator needs</h2>
+        </div>
+        <p class="text-on-surface-variant max-w-md text-sm">MVP today focuses on the flows that win early users: sign-in, upload with provenance, gallery, discovery/staging, permissioned albums, and archive controls.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-surface-container border border-outline-variant rounded-xl p-6">
+          <span class="material-symbols-outlined text-atproto-blue mb-3 block">login</span>
+          <h3 class="font-semibold mb-2">Sign in with atproto</h3>
+          <p class="text-on-surface-variant text-sm">Use Bluesky or a <code class="text-primary text-xs">*.pds.atpix.net</code> handle. No new password silo—OAuth to your PDS.</p>
+        </div>
+        <div class="bg-surface-container border border-outline-variant rounded-xl p-6">
+          <span class="material-symbols-outlined text-atproto-blue mb-3 block">upload</span>
+          <h3 class="font-semibold mb-2">Upload with credentials</h3>
+          <p class="text-on-surface-variant text-sm">Publish network-ready images with C2PA manifests. Choose what non-PII camera metadata hits the public record; keep the rest private.</p>
+        </div>
+        <div class="bg-surface-container border border-outline-variant rounded-xl p-6">
+          <span class="material-symbols-outlined text-atproto-blue mb-3 block">photo_library</span>
+          <h3 class="font-semibold mb-2">Personal archive grid</h3>
+          <p class="text-on-surface-variant text-sm">My Gallery is a real working surface—search, upload, visibility chips, and provenance badges in a media-first layout.</p>
+        </div>
+        <div class="bg-surface-container border border-outline-variant rounded-xl p-6">
+          <span class="material-symbols-outlined text-atproto-blue mb-3 block">travel_explore</span>
+          <h3 class="font-semibold mb-2">Network staging</h3>
+          <p class="text-on-surface-variant text-sm">Pull candidates from accounts and hashtags (including Bluesky), review a time window (default 48h), then add only what belongs in your albums.</p>
+        </div>
+        <div class="bg-surface-container border border-outline-variant rounded-xl p-6">
+          <span class="material-symbols-outlined text-atproto-blue mb-3 block">history</span>
+          <h3 class="font-semibold mb-2">Version history that sticks</h3>
+          <p class="text-on-surface-variant text-sm">Operator-path users get content versions you can view and restore—enhance and crop without losing prior masters.</p>
+        </div>
+        <div class="bg-surface-container border border-outline-variant rounded-xl p-6">
+          <span class="material-symbols-outlined text-atproto-blue mb-3 block">inventory_2</span>
+          <h3 class="font-semibold mb-2">Export packages</h3>
+          <p class="text-on-surface-variant text-sm">Leave with zip/tar OCFL-style packages when you need portability. The network still sees a normal image for interoperability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product tour with mockups -->
+  <section id="product" class="py-24 px-grid-margin max-w-container-max-width mx-auto space-y-24">
+    <div class="max-w-2xl">
+      <p class="section-kicker mb-3">Product tour</p>
+      <h2 class="font-headline-md text-headline-md md:text-[40px] leading-tight">Designed like a tool. Marketed like a product.</h2>
+      <p class="text-on-surface-variant mt-4">UI frames from the ATPix design system—protocol-native dark chrome, media first, high precision.</p>
+    </div>
+
+    <!-- Sign in -->
+    <article class="feature-card grid lg:grid-cols-2 gap-10 items-center">
+      <div class="order-2 lg:order-1 space-y-4">
+        <p class="section-kicker">Identity</p>
+        <h3 class="font-headline-md text-2xl md:text-3xl">One handle. No password factory.</h3>
+        <p class="text-on-surface-variant leading-relaxed">Sign in with the account you already use on the Atmosphere—or create a free ATPix-hosted handle when you want full media history and packages. Your DID is the constant; apps come and go.</p>
+        <ul class="text-sm text-on-surface-variant space-y-2">
+          <li class="flex gap-2"><span class="text-status-public">✓</span> OAuth with atproto (no app passwords)</li>
+          <li class="flex gap-2"><span class="text-status-public">✓</span> Bluesky and <code class="text-primary">*.pds.atpix.net</code> welcome</li>
+          <li class="flex gap-2"><span class="text-status-public">✓</span> Clear path to enroll operator media when you need it</li>
+        </ul>
+      </div>
+      <div class="order-1 lg:order-2 mock-frame rounded-xl overflow-hidden">
+        <img src="assets/images/product/thumbs/sign-in.jpg" alt="ATPix sign-in screen for atproto handles" width="1200" height="960" loading="lazy"/>
+      </div>
+    </article>
+
+    <!-- Upload -->
+    <article class="feature-card grid lg:grid-cols-2 gap-10 items-center">
+      <div class="mock-frame rounded-xl overflow-hidden">
+        <img src="assets/images/product/thumbs/upload.jpg" alt="ATPix upload flow with EXIF field picker and destination controls" width="1200" height="960" loading="lazy"/>
+      </div>
+      <div class="space-y-4">
+        <p class="section-kicker">Publish</p>
+        <h3 class="font-headline-md text-2xl md:text-3xl">Upload once. Ship trust with the file.</h3>
+        <p class="text-on-surface-variant leading-relaxed">Every publish path is built for photographers: signed credentials, EXIF stripped from public bytes by default, and optional non-PII fields you choose for the public record.</p>
+        <ul class="text-sm text-on-surface-variant space-y-2">
+          <li class="flex gap-2"><span class="text-status-public">✓</span> C2PA on the network image</li>
+          <li class="flex gap-2"><span class="text-status-public">✓</span> Public repo or permissioned space destinations</li>
+          <li class="flex gap-2"><span class="text-status-public">✓</span> Privacy-first EXIF handling</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Staging -->
+    <article class="feature-card grid lg:grid-cols-2 gap-10 items-center">
+      <div class="order-2 lg:order-1 space-y-4">
+        <p class="section-kicker">Discovery → curation</p>
+        <h3 class="font-headline-md text-2xl md:text-3xl">Don’t scroll forever. Stage, then commit.</h3>
+        <p class="text-on-surface-variant leading-relaxed">Pull from accounts and hashtags across the network—including the Bluesky firehose of public photos—review candidates in Staging, then add only what belongs in your ATPix albums.</p>
+        <ul class="text-sm text-on-surface-variant space-y-2">
+          <li class="flex gap-2"><span class="text-status-public">✓</span> Configurable time window (default last 48 hours)</li>
+          <li class="flex gap-2"><span class="text-status-public">✓</span> Multi-select add / discard</li>
+          <li class="flex gap-2"><span class="text-status-public">✓</span> EXIF probe without blocking imports</li>
+        </ul>
+      </div>
+      <div class="order-1 lg:order-2 mock-frame rounded-xl overflow-hidden">
+        <img src="assets/images/product/thumbs/staging.jpg" alt="ATPix staging review imports interface" width="1200" height="960" loading="lazy"/>
+      </div>
+    </article>
+
+    <!-- Detail + history -->
+    <article class="feature-card grid lg:grid-cols-2 gap-10 items-center">
+      <div class="mock-frame rounded-xl overflow-hidden">
+        <img src="assets/images/product/thumbs/photo-detail.jpg" alt="ATPix photo detail with Content Credentials sidebar" width="1200" height="960" loading="lazy"/>
+      </div>
+      <div class="space-y-4">
+        <p class="section-kicker">Detail &amp; history</p>
+        <h3 class="font-headline-md text-2xl md:text-3xl">A photo is more than a thumbnail.</h3>
+        <p class="text-on-surface-variant leading-relaxed">Open the work: caption, keywords, Content Credentials, version history for operator-path libraries, and a path for anyone to report a rights concern—without burying the image under chrome.</p>
+      </div>
+    </article>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <article class="feature-card space-y-4">
+        <div class="mock-frame rounded-xl overflow-hidden">
+          <img src="assets/images/product/thumbs/version-history.jpg" alt="ATPix content version history drawer" width="1200" height="960" loading="lazy"/>
+        </div>
+        <h3 class="font-headline-md text-xl">Restore with confidence</h3>
+        <p class="text-on-surface-variant text-sm">Content versions for enhance and crop—caption-only edits stay light. Restore creates a new head without erasing the past.</p>
+      </article>
+      <article class="feature-card space-y-4">
+        <div class="mock-frame rounded-xl overflow-hidden">
+          <img src="assets/images/product/thumbs/permissioned.jpg" alt="ATPix permissioned space admin" width="1200" height="960" loading="lazy"/>
+        </div>
+        <h3 class="font-headline-md text-xl">Permissioned spaces that read like products</h3>
+        <p class="text-on-surface-variant text-sm">Invite collaborators by Bluesky or ATPix DID. Roles, audit trail, membership—not “encrypted for DIDs” snake oil.</p>
+      </article>
+    </div>
+
+    <!-- Mobile discovery -->
+    <article class="feature-card grid lg:grid-cols-2 gap-10 items-center">
+      <div class="order-2 lg:order-1 space-y-4">
+        <p class="section-kicker">Everywhere you create</p>
+        <h3 class="font-headline-md text-2xl md:text-3xl">Responsive from day one. PWA-ready.</h3>
+        <p class="text-on-surface-variant leading-relaxed">The product is designed for phone-first sessions—bottom nav, touch targets, media-first detail sheets—so your first community can actually use it in the field.</p>
+      </div>
+      <div class="order-1 lg:order-2 flex justify-center">
+        <div class="mock-frame rounded-[1.5rem] overflow-hidden max-w-[280px] w-full">
+          <img src="assets/images/product/thumbs/discovery-mobile.jpg" alt="ATPix discovery feed on mobile" width="780" height="1844" loading="lazy"/>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Technical innovations (user-facing) -->
+  <section class="py-24 px-grid-margin bg-surface border-y border-outline-variant">
+    <div class="max-w-container-max-width mx-auto">
+      <div class="max-w-2xl mb-12">
+        <p class="section-kicker mb-3">Technical innovations</p>
+        <h2 class="font-headline-md text-headline-md md:text-[36px] leading-tight">Innovation you can explain in one sentence</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl border border-outline-variant bg-surface-container">
+          <h3 class="font-semibold text-primary mb-2">Dual surface media</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">The network always sees a normal image blob for interoperability. Creators on ATPix media also get durable versioned packages—so Atmosphere apps keep working while you keep archive integrity.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-outline-variant bg-surface-container">
+          <h3 class="font-semibold text-primary mb-2">Stable photo identity</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">One rkey for the life of the photo. Versions advance underneath. Links and albums don’t shatter every time you enhance a master.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-outline-variant bg-surface-container">
+          <h3 class="font-semibold text-primary mb-2">Open Lexicons</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed"><code class="text-xs text-primary">net.atpix.gallery.*</code> records are readable by any compatible app. Your gallery isn’t trapped in a proprietary schema.</p>
+        </div>
+        <div class="p-6 rounded-xl border border-outline-variant bg-surface-container">
+          <h3 class="font-semibold text-primary mb-2">Privacy by default on publish</h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed">Full EXIF stripped from public pixels; private vault for you when enrolled; only non-PII fields you opt into appear on the public record.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community CTA -->
+  <section id="community" class="py-28 px-grid-margin hero-glow">
+    <div class="max-w-3xl mx-auto text-center space-y-6">
+      <p class="section-kicker">Join the first community</p>
+      <h2 class="font-display-lg text-display-lg md:text-[48px] leading-tight">Be early. Shape the gallery the open web deserves.</h2>
+      <p class="text-on-surface-variant text-lg max-w-2xl mx-auto">
+        ATPix is at MVP—real product surfaces, real protocol commitments, and a community that still gets a voice.
+        Star the repo, follow on Bluesky, and help us pressure-test the flows that matter.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+        <a href="https://github.com/arkrim/atpix" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <span class="material-symbols-outlined text-[20px]">star</span>
+          GitHub — arkrim/atpix
+        </a>
+        <a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Follow @atpix.bsky.social
+        </a>
+      </div>
+      <p class="text-xs text-on-surface-variant/70 pt-4">MVP · Built on AT Protocol · Product by Arkrim</p>
+    </div>
+  </section>
 </main>
 
-<!-- Footer -->
 <footer class="border-t border-outline-variant py-12 px-grid-margin bg-surface">
-<div class="max-w-container-max-width mx-auto flex items-center justify-between gap-8">
-<div class="space-y-4">
-<a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="font-headline-md text-headline-md font-bold text-atproto-blue no-underline">ATPix</a>
-<p class="text-on-surface-variant max-w-xs text-sm">Protocol-native media reference implementation. Built on AT Protocol + HappyView.</p>
-</div>
-<a href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 shrink-0 font-body-base text-body-base text-on-surface-variant hover:text-primary transition-colors no-underline">
-<svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-<path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364.136-.02.275-.039.415-.056-.138.22-.253.442-.345.666-1.125 2.43-2.016 4.56-2.016 6.795 0 3.896 2.517 7.352 6.004 7.352 3.488 0 6.004-3.456 6.004-7.352 0-2.235-.89-4.365-2.016-6.795-.092-.224-.207-.446-.345-.666.14.017.279.036.415.056 2.67.297 5.568-.628 6.383-3.364C23.622 9.418 24 4.458 24 3.768 24 3.08 23.861 1.908 23.098 1.565c-.659-.299-1.664-.621-4.3 1.24C16.046 4.747 13.087 8.686 12 10.8z"/>
-</svg>
-Bluesky
-</a>
-</div>
+  <div class="max-w-container-max-width mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+    <div class="space-y-3">
+      <a href="#" class="font-headline-md text-headline-md font-bold text-atproto-blue no-underline">ATPix</a>
+      <p class="text-on-surface-variant max-w-sm text-sm">The photographer’s gallery on the AT Protocol. Own the records. Prove the provenance. Share with intent.</p>
+    </div>
+    <div class="flex flex-wrap gap-6 text-sm">
+      <a class="nav-link" href="#features">Features</a>
+      <a class="nav-link" href="#product">Product tour</a>
+      <a class="nav-link" href="https://github.com/arkrim/atpix" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="nav-link" href="https://bsky.app/profile/atpix.bsky.social" target="_blank" rel="noopener noreferrer">Bluesky</a>
+    </div>
+  </div>
+  <div class="max-w-container-max-width mx-auto mt-10 pt-6 border-t border-outline-variant/60 text-xs text-on-surface-variant/60 flex flex-col sm:flex-row gap-2 sm:justify-between">
+    <span>© ATPix · atpix.net</span>
+    <span>UI previews are product design mockups for the MVP experience.</span>
+  </div>
 </footer>
 
-<script>
-    // Keep existing micro-interactions
-    document.querySelectorAll('.group').forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            const img = item.querySelector('img');
-            if(img) img.style.transform = 'scale(1.05)';
-        });
-        item.addEventListener('mouseleave', () => {
-            const img = item.querySelector('img');
-            if(img) img.style.transform = 'scale(1)';
-        });
-    });
-</script>
 </body>
 </html>
